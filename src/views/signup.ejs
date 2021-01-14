@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title><%=title%></title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Home</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+          <%for(i=0;i<nav.length;i++){%>
+        <li>
+          <a href="<%=nav[i].link%>"><%=nav[i].name%></a>
+        </li>
+        <%}%>
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+          <ul class="dropdown-menu" style="padding:12px;">
+            <form class="form-inline">
+              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+            </form>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1><%=title%>
+          <p class="lead"></p>
+        </h1>
+      </div>
+     
+              
+			
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>    
+  
+  <div class="containerform">
+    <div class="cont">
+    
+      
+      <div class="form sign-in">
+        
+        
+        
+        <div id="error"></div>
+       
+        <form class="Form" onsubmit="return validation(callback)" class="bg-light">
+        <label>
+          <span>Name</span>
+          <input type="name" name="Name" class="name" id="name" autocomplete="off">
+        </label>
+       
+        <label>
+          <span>Email</span>
+          <input type="text" class="email" id="email" autocomplete="off">
+        </label>
+        
+        <label>
+          <span>Password</span>
+          <input type="password" class="pass" id="pass" autocomplete="off">
+          <p class="Strength" id="length"></p>
+        </label>
+        
+        <label>
+          <span>Confirm Password</span>
+          <input type="password" class="cpass" id="cpass" autocomplete="off">
+          <p class="Strength" id="length"></p>
+        </label>
+       
+        <label>
+          <span>Phone number</span>
+          <input type="text" class="mobno" id="mobno" autocomplete="off">
+        </label>
+        
+        <button class="submit" >Signup now! </button>
+        </form>
+  
+        <div class="sub-cont">
+              <h4>Already have an account?<a href="/login">
+                Login !
+                </a></h4>
+            
+        </div>
+  
+  
+          
+  
+      </div>
+  
+  <script>
+    function validation(callback)
+    {
+      
+        const name=document.getElementById('name').value;
+        const email=document.getElementById('email').value;
+        const pass=document.getElementById('pass').value;
+        const cpass=document.getElementById('cpass').value;
+        const number=document.getElementById('mobno').value;
+        const error=document.getElementById('error');
+        const success=document.getElementById('success');
+        var filter = /^[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+        var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        let text;
+  
+        if(name=="")
+        {
+          text="**Please fill in the name**";
+          error.style.padding="10px";
+          error.innerHTML=text;
+          return false;
+        }
+        else if(name.length<3)
+        {
+          text="**Name should more than 2 characters**";
+          error.style.padding="10px";
+          error.innerHTML=text;
+          return false;
+        }
+        else if(email=="")
+        {
+          text="**Please fill in the email-address**";
+          error.style.padding="10px";
+          error.innerHTML=text;
+          return false;
+        }
+        else if(email.search(filter)==-1)
+        {
+          text="**Please enter a valid email-address**";
+          error.style.padding="10px";
+          error.innerHTML=text;
+          return false;
+        }
+       else  if(pass==""||pass.length<8)
+        {
+          text="**Please enter the password(atleast 8 characters long)**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+     
+      
+        else if(pass.search(/[A-Z]/)== -1)
+        {
+          text="**Password must contain atleast one uppercase character**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+        else if(pass.search(/[a-z]/)== -1)
+        {
+          text="**Password must contain atleast one lowercase character**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+        else if(pass.search(/([0-9])/) == -1)
+        {
+          text="**Password must contain atleast one digit from 0-9**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+        else if(cpass=="")
+        {
+          text="**Please enter the confirm password field**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+        else if(pass !=cpass)
+        {
+          text="**Passwords do not match! Please enter the same password**";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+        
+  
+        else if(number.search(phoneno) == -1)
+        {
+          text="**Please enter a valid Phone number**";
+          error.style.padding="10px";
+          error.innerHTML=text;
+          return false;
+        }
+        else
+        {
+          callback();
+        }
+  
+       
+    }
+    function callback()
+        {
+                  
+                  window.open("login");
+                  window.close("signup");
+                  
+  
+        
+       
+      }
+  
+  
+  </script>
+  <script>
+  
+    pass.addEventListener('keyup',function(){
+  
+        strength();
+    })
+    function strength()
+    {
+        var val=document.getElementById("pass").value;
+        var status=document.getElementById("length");
+        var counter=0;
+  
+        if(val=="")
+        {
+          text="Please enter the password(atleast 8 characters long)";
+          error.style.padding='10px';
+          error.innerHTML=text;
+          return false;
+        }
+  
+        if(val!="")
+        {
+            if(val.length<=5)
+                counter=1;
+            if(val.length > 5 && val.length<=10 )
+                counter=2;
+            if(val.length > 10 && val.length<=15 )
+                counter=3;
+  
+  
+            if(counter == 1)
+            {
+                status.innerHTML="POOR";
+                status.style.background="red";
+                status.style.color="white";
+                status.style.width="35%";
+                status.style.textAlign="center";
+                status.style.borderRadius="10px";
+            }
+            if(counter == 2)
+            {
+                status.innerHTML="MEDIUM";
+                status.style.background="orange";
+                status.style.color="white";
+                status.style.width="60%";
+                status.style.textAlign="center";
+                status.style.borderRadius="10px";
+            }
+            if(counter == 3)
+            {
+                status.innerHTML="STRONG";
+                status.style.background="green";
+                status.style.color="white";
+                status.style.width="100%";
+                status.style.textAlign="center";
+                status.style.borderRadius="10px";
+            }
+  
+        }
+    }
+  
+  </script>
+
+  </div>
+                                                                                
+<hr>
+
+<div class="container" id="footer">
+  <div class="row">
+    <div class="col col-sm-12">
+      
+      <h1>Follow Us</h1>
+      <div class="btn-group">
+       <a class="btn btn-twitter btn-lg" href="#"><i class="icon-twitter icon-large"></i> Twitter</a>
+	   <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+	   <a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-inline">
+          <li><i class="icon-facebook icon-2x"></i></li>
+          <li><i class="icon-twitter icon-2x"></i></li>
+          <li><i class="icon-google-plus icon-2x"></i></li>
+          <li><i class="icon-pinterest icon-2x"></i></li>
+        </ul>
+        
+      </div>
+      <div class="col-sm-6">
+          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
+      </div>
+    </div>
+  </div>
+</footer>
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  
+<style>
+  input,button{
+    border: none;
+    outline: none;
+    background: none;
+
+}
+.containerform
+{
+  margin-top: 5%;
+  margin-left: 30%;
+}
+
+.cont{
+  
+    overflow: hidden;
+    position: relative;
+    width: 650px;
+    height: 700px;
+    background: white;
+    border-radius: 40px;
+}
+.cont1{
+    overflow: hidden;
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border-radius: 40px;
+    
+    background: white;
+}
+
+.form{
+    padding: 9%;
+}
+
+
+
+.form h2{
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    margin-top:0px;
+    padding-top: 0%;
+}
+
+.sub-cont
+{
+    color:#505f75 ;
+    text-align: center;
+}
+
+.sub-cont a
+{
+    color: #111166;
+   
+}
+.sub-cont1
+{
+    color:#505f75 ;
+    text-align: center;
+    
+}
+
+.sub-cont1 a
+{
+    color: #111166;
+   
+}
+
+
+label{
+    display: block;
+    width: 260px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+label span{
+    font-size: 14px;
+    font-weight: 600;
+    color: #505f75;
+    text-transform: uppercase;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 16px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(109, 93, 93, 0.4);
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+button{
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 36px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.submit{
+   margin-top: 40px;
+   margin-bottom: 30px;
+   text-transform: uppercase;
+   font-weight: 600;
+   font-family: 'Nunito', sans-serif;
+   color: #fff;
+   background: #111166;
+}
+
+.submit:hover{
+    color: #111166;
+    background:#fff ;
+    border: 2px solid #111166;
+}
+
+.forgot-pass{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5b92d1;
+    cursor: pointer;
+}
+
+.forgot-pass:hover{
+    color: red;
+}
+
+
+  a:link{
+      text-decoration: none;
+  }
+  
+ /* .strength{
+     padding: 0%;
+     margin: 0%;
+ } */
+ 
+ #error{
+     text-align: center;
+     padding-bottom: 2%;
+     color: red;
+     font-weight: 600;
+ }
+</style>
+
+	</body>
+</html>
