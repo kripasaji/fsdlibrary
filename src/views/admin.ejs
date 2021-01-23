@@ -33,16 +33,7 @@
         </li>
         <%}%>
       </ul>
-      <ul class="nav navbar-right navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-          <ul class="dropdown-menu" style="padding:12px;">
-            <form class="form-inline">
-              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-            </form>
-          </ul>
-        </li>
-      </ul>
+     
     </nav>
   </div>
 </header>
@@ -90,7 +81,7 @@
           
           
           <div class= form>
-            <form action='/books/add-book' method="POST">  
+            <form action='/admin/add-book' method="POST">  
             <h2>Add a new book !</h2>
              
             <label class="formlabel"> Book name </label>  <br>      
@@ -99,10 +90,9 @@
             <input type="text" class="forminput" name="author" size="15"/> <br> <br>  
             <label class="formlabel"> Genre </label> <br>        
             <input type="text" class="forminput" name="genre" size="15"/> <br> <br> 
-            <label class="formlabel"> Publisher </label>   <br>  
-            <input type="text" class="forminput" name="publisher" size="15"/> <br> <br>  
+            <label class="formlabel"> About Book (upto 250 words) </label>   <br>  
+            <input type="text" class="forminput" name="about" maxlength="250" style="height: 60px;" /> <br> <br>  
              
-            
             <br>  
             <label for="fileupload" class="formlabel"> Select an image to upload</label><br>
             
@@ -174,8 +164,8 @@
             text-align: center;
             width:100%;
             /* margin-left: 25%; */
-            padding-top: 4%;
-            padding-bottom: 4%;
+            /* padding-top: 4%; */
+            /* padding-bottom: 4%; */
           
           }
 
@@ -199,7 +189,7 @@
           .form h2
           {
             text-align: center;
-            padding-bottom: 6%;
+            padding-bottom: 4%;
             padding-top: 0%;
             color:#111166;
           }
@@ -216,7 +206,7 @@
 }
 
 .submit{
-   margin-top: 40px;
+   /* margin-top: 40px; */
    margin-bottom: 30px;
    text-transform: uppercase;
    font-weight: 600;

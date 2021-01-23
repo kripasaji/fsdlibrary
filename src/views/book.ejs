@@ -33,16 +33,7 @@
         </li>
         <%}%>
       </ul>
-      <ul class="nav navbar-right navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-          <ul class="dropdown-menu" style="padding:12px;">
-            <form class="form-inline">
-              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
-            </form>
-          </ul>
-        </li>
-      </ul>
+     
     </nav>
   </div>
 </header>
@@ -102,8 +93,14 @@
                   <h4><span class="label label-default"><%=book.author%></span></h4><h4>
                   <small style="font-family:courier,'new courier';" class="text-muted"><%=book.genre%>  
                   </h4>
-                 <p medium><%=book.details%></p>
+                 <p medium><%=book.about%></p>
                 </div>
+                <form action="/books/updateform/<%=book._id%>" method="POST">
+                  <input type="submit" value="Update" style="margin:8px; width: 65px;" ></input>
+                </form>
+                <form action="/books/delete/<%=book._id%>" method="POST">
+                  <input type="submit" value="Delete" style="margin:8px; width: 65px;" ></input>
+                </form>
                 <div class="col-xs-3"></div>
               </div>
               <br><br>
@@ -114,7 +111,7 @@
           <!--/stories-->
           
           
-          <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a>
+          <!-- <a href="/" class="btn btn-primary pull-right btnNext">More <i class="glyphicon glyphicon-chevron-right"></i></a> -->
         
           
         </div>
